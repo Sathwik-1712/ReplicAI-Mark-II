@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0c0f0e;
+  --color-panel: #141917;
+  --color-raise: #1b211e;
+  --color-line: #27302b;
+  --color-chalk: #eef2ec;
+  --color-mute: #8f9b94;
+  --color-volt: #c6f432; /* good reps, primary actions */
+  --color-flare: #ff5d3b; /* faults */
+  --color-amber: #ffbe3d; /* uncertain: the camera could not see well */
+  --color-sky: #7cc8ff; /* written by the AI coach */
+  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Barlow Condensed", "Barlow", ui-sans-serif, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--color-ink);
+  color: var(--color-chalk);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .display {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+    line-height: 0.95;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .card {
+    background: var(--color-panel);
+    border: 1px solid var(--color-line);
+    border-radius: 14px;
+  }
+  .label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+  }
+  .shimmer {
+    background: linear-gradient(90deg, var(--color-raise) 0%, #24302b 50%, var(--color-raise) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s linear infinite;
+    border-radius: 6px;
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes pop {
+  0% { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+.pop {
+  animation: pop 260ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pop,
+  .shimmer {
+    animation: none;
+  }
+}

@@ -1,0 +1,26 @@
+[project]
+name = "replicai-server"
+version = "2.0.0"
+description = "ReplicAI coach API: turns measured sets into coaching with Gemini, and serves the web app."
+requires-python = ">=3.12"
+dependencies = [
+    "flask>=3.1.3",
+    "gunicorn>=26.2.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.9",
+]
+
+[tool.uv]
+package = false
+exclude-newer = "2026-09-30T00:00:00Z"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 130
